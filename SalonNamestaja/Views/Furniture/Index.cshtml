@@ -1,0 +1,239 @@
+﻿@model IEnumerable<SalonNamestaja.Models.Furniture>
+
+@*@model SalonNamestaja.Models.Furniture*@
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = null;
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (Session != null && Session["Admin"] != null)
+    {
+        bool b = (bool)Session["Admin"];
+        if (b == true)
+        {
+            @Html.ActionLink("Create New", "Create")
+        }
+        else
+        {
+        }
+    }
+</p>
+@using (@Html.BeginForm("Index", "Furniture", FormMethod.Post))
+{
+    <br>
+    <div class="form-group">
+        <div class="row">
+            <label class="control-label col-lg-offset-2 " for="txtSearch"> Search by </label>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-1">
+                <ul>
+                   <li>
+                       <text>Name</text>
+                     @Html.TextBox("searchName", null, new { id = "txtSearch", @class = "form-control valid",
+                        @data_val = "true", @data_val_minLength = 3, @data_val_maxLength = 30, @data_val_required = "required", @MaxLengthAttributeAdapter = 30, @MinLengthAttributeAdapter =3 })
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </li>
+                    <li>
+                        <text>Color</text>
+                        @Html.TextBox("searchColor", null, new { id = "txtSearch", @class = "form-control" })
+                    </li>
+                    <li>
+                        <text>Country</text>
+                        @Html.TextBox("searchCountry", null, new { id = "txtSearch", @class = "form-control" })
+                    </li>
+                    <li>
+                        <text>Manufacturer</text>
+                        @Html.TextBox("searchManufacturer", null, new { id = "txtSearch", @class = "form-control" })
+                    </li>
+                    <li>
+                        <text>Price Max</text>
+                        @Html.TextBox("searchPrice", null, new { id = "txtSearch", @class = "form-control" })
+                    </li>
+                    <li>
+                        <text>Quantity</text>
+                        @Html.TextBox("searchQuantity", null, new { id = "txtSearch", @class = "form-control" })
+                    </li>
+                    <li>
+                        <text>Year</text>
+                        @Html.TextBox("searchYear", null, new { id = "txtSearch", @class = "form-control" })
+                    </li>
+                    <li>
+                        @Html.DropDownList("CategoryName", null, "All Category", htmlAttributes: new { @class = "form-control" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-offset-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (@Html.BeginForm("Index", "Furniture", FormMethod.Post))
+{
+    <div id="Category">
+        @*<div class="form-group">
+            @Html.DropDownList("CategoryName", null, "SelectCategory", htmlAttributes: new { @class = "form-control" })
+            <input type="submit" value="Search by Category" />
+        </div>*@
+    </div>
+    @*<b>Pretraga po:</b> @Html.RadioButton("searchBy", "Naziv", true) <text>Nazivu</text>
+    @Html.RadioButton("searchBy", "Boji") <text>Boji</text>
+    @Html.RadioButton("searchBy", "Zemlji_proizvodjaca") <text>Zemlji proizvodjaca</text>
+    @Html.RadioButton("searchBy", "Naziv_proizvodjaca") <text>Nazivu proizvodjaca</text>
+    @Html.RadioButton("searchBy", "Cena") <text>Ceni</text>
+    @Html.RadioButton("searchBy", "Kolicina") <text>Kolicini</text>
+    @Html.RadioButton("searchBy", "Tip") <text>Tipu namestaja</text>
+    @Html.RadioButton("searchBy", "Godina") <text>Godini</text>
+    @Html.RadioButton("searchBy", "Salon") <text>Nazivu salona</text><br />
+
+
+    <div class="row" style="padding:0px;">
+        <div class="col-md-3" style="padding:0px;">
+            @Html.Editor("search", new { htmlAttributes = new { @class = "form-control", placeholder = "Pretraga" } })
+        </div>
+        <div class="col-md-3" style="padding-left:4px;">
+            <input type="submit" value="Pretrazi" class="btn btn-primary" />
+        </div>
+    </div>*@
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nameOfTheManufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSource)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nameOfTheManufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageSource)
+            <img src="@item.ImageSource"  height="50" width="50"/>
+        </td>
+        <td>
+           @if (Session != null && Session["Admin"] != null)
+            { 
+                bool b = (bool)Session["Admin"];
+                if (b == true)
+                { 
+                    <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id}) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id})|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Add one piece to the cart", "Add2Cart", new { id = item.id }) |
+                    @*@Html.ActionLink("Buy", "Buy", new { id=item.id })*@
+                    </td>
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+<style>
+    #Category {
+        float: left;
+    }
+
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+            $(document).ready(function () {
+                $("#txtSearch").autocomplete({
+                    source: function (request, responce) {
+                        $.ajax({
+                            url: "/Furniture/Index2",
+                            type: "POST",
+                            dataType: "json",
+                            data: { Prefix: request.term },
+                            success: function (data) {
+                                responce($.map(data, function (item) {
+                                    return { label: item.CategoryName, value: item.CategoryName };
+                                }))
+                            }
+                        })
+                    },
+                    messages: {
+                        noResults: "", results: ""
+                    }
+                });
+            })
+</script>

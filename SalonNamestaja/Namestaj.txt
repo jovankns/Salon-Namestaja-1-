@@ -1,0 +1,4 @@
+1,Bambi,Braon,Srbija,Vitorog,10000,4,Krevet,1999,Aleksandro,../../Images/Krevet1.jpg
+2,Jasna,Braon,Srbija,Vitorog,10000,2,Krevet,1999,Aleksandro,../../Images/Krevet2.jpg
+3,Kinamo,Crvena,Jugoslavija,Smith,30000,5,Kuhinja,1999,Salon1,../../Images/Kuhinja1.jpg
+4,Krebel,Bela,Argentina,Proizvodjac,50000,2,Kuhinja,1999,Salon2,../../Images/Kuhinja2.jpg

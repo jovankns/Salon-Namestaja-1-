@@ -1,0 +1,83 @@
+﻿@model SalonNamestaja.Models.User
+
+<h2>Login</h2>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h2>Login page</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="UserName">User name</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.userName, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control",
+                               style = "width: 250px",
+                               required = "required",
+                               minlength = 3,
+                           }
+                       })
+                            @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(model => model.password, new
+                       {
+                           @class = "form-control",
+                           style = "width: 250px",
+                           required = "required",
+                           minlength = 3,
+                       })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Login" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+<style>
+    body {
+        background-color: lightgray;
+    }
+</style>
+
+
+
